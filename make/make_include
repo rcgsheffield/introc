@@ -1,8 +1,0 @@
-#Make include file
-CC = gcc
-CLINKER = ${CC}
-FLAGS = 
-LIBS = 
-LINKFLAGS = -g -Wall
-VPATH = src:../src
-INCLUDE = 
