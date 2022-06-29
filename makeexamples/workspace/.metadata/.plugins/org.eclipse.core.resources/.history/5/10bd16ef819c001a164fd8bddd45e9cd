@@ -1,0 +1,8 @@
+#Makefile for acml test
+CC = pgCC
+CLINKER = ${CC}
+FLAGS = -O4 -fast -tp k8-64
+LIBS = -L/usr/local/acml-pg2.6.0/pgi64/lib -static -lm -lacml -lg2c
+LINKFLAGS = -ggdb -Wall -g3
+VPATH = src:../include
+INCLUDE = -I/usr/local/acml-pg2.6.0/pgi64/include

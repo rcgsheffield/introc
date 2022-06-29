@@ -1,0 +1,20 @@
+!SESSION Nov 30, 2005 11:00:17.913 ---------------------------------------------
+java.fullversion=GNU libgcj 3.5-tree-ssa 20030617 (Red Hat Linux Rawhide 3.5ssa-48)
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments: -os linux -ws gtk -arch x86_64 -install file:/usr/lib/eclipse/
+!ENTRY org.eclipse.core.runtime 2 1 Nov 30, 2005 11:00:17.913
+!MESSAGE Problems encountered loading the plug-in registry.
+!SUBENTRY 1 org.eclipse.core.runtime 2 1 Nov 30, 2005 11:00:17.913
+!MESSAGE Unknown extension point "org.eclipse.ui.capabilities" specified in plug-in "org.eclipse.jdt.ui".
+!SESSION 2006-02-13 11:01:42.518 -----------------------------------------------
+eclipse.buildId=M20050929-0840
+java.version=1.5.0_05
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_GB
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2006-02-13 11:02:06.187
+!MESSAGE A workspace crash was detected. The previous session did not exit normally.
+
+!ENTRY org.eclipse.core.resources 1 0 2006-02-13 11:03:06.922
+!MESSAGE Conversion of local history completed successfully.

@@ -1,0 +1,12 @@
+*** SESSION Nov 30, 2005 11:00:26.712 ------------------------------------------
+ENTRY org.eclipse.cdt.core 4 4 Nov 30, 2005 11:05:24.577
+MESSAGE Failed to index /acmltest/src/acml.cpp
+ENTRY org.eclipse.cdt.core 4 4 Nov 30, 2005 11:05:38.756
+MESSAGE Failed to index /mc/src/mc.cpp
+ENTRY org.eclipse.cdt.core 4 4 Nov 30, 2005 11:05:38.966
+MESSAGE Failed to index /mc/src/mc_system.cpp
+ENTRY org.eclipse.cdt.core 4 4 Nov 30, 2005 11:05:44.395
+MESSAGE Failed to index /mylib/vec.cc
+ENTRY org.eclipse.cdt.core 4 4 Nov 30, 2005 11:05:49.155
+MESSAGE Failed to index /mylibtest/mylibtest.cc
+*** SESSION Feb 13, 2006 11:02:14.181 ------------------------------------------

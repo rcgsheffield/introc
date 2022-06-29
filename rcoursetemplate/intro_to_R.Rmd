@@ -1,0 +1,320 @@
+---
+title: "Introduction to R"
+css: styles.css
+output:
+  html_document:
+    toc: yes
+    toc_depth: 2
+    toc_float: yes
+
+
+---
+
+-----
+
+<br>
+
+# Prologue
+
+<br>
+
+## Who this course is for
+<br>
+This course is designed to provide an introduction to the R programming language
+to those who have no prior experience programming. Some of the concepts covered
+are general programming concepts, while others are specific to the R language.
+
+This course should be most useful to those with no programming experience who are
+interested in using R for their work, or for those experienced with other languages
+who want to switch to R. 
+
+## Prerequisites
+<br>
+Please install [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/#download) to the machine you're using to attend this workshop, this is an IDE (Integrated Development Environment) which you'll need in order to follow along.
+
+If you are using a university managed desktop, RStudio should be available to install from the **Software Center**
+
+## Learning outcomes
+
+<br>
+
+At the end of this session you will know:
+
+- How to use R to perform calculations using commands
+- How to create and manipulate objects
+- How to call a function
+- How to write code within a script so that it can be saved for the future
+- What data types are, and which data types can be described in R
+- Where to find help
+
+-----
+
+# How to read this document
+<br>
+
+This document presents information by using some different formatting cues:
+
+- R code chunks are presented in boxes like this one:
+
+```{r, class.source = "code-blue"}
+# This is a code chunk!
+```
+
+- If there is code to execute, the output of the code chunk will be displayed below the code box:
+
+```{r, class.source = "code-blue"} 
+2 + 2
+```
+
+- Sometimes the colour of the box changes to highlight mistakes, or solutions:
+
+```{r, class.source = "code-red"}
+# This chunk is highlighted in red to indicate a mistake
+```
+
+```{r, class.source = "code-green"}
+# This chunk is highlighted in green to indicate a solution
+```
+
+- When you see this button appear, you can click it to reveal some extra information about the topic indicated:
+
+<details>
+<summary>Click me!</summary>
+
+Information within these sections are useful, but you don't need to worry about them to follow the practical elements of this tutorial.
+
+</details>
+<br>
+
+-----
+
+# Commands
+<br>
+
+We can send instructions to R using the **console**. This is the main window
+that we are presented with when we open RStudio. 
+
+[Image Highlighting the Command Window in default RStudio]
+
+
+The **>** symbol which appears in the console shows that R is awaiting an
+instruction, by entering our commands after this symbol, we can ask R to do something.
+
+Perhaps the most basic use of R is as a calculator, let's see an example of using R
+to perform an addition of two numbers, by entering the following into the console
+and pressing <kbd>Enter</kbd>
+
+```{r, class.source="code-blue"}
+1 + 1
+```
+
+We can see that R has taken our command and returned the **value** of the
+expression that has been evaluated.
+<br>
+
+R can understand the numerical operators shown in the table below:
+
+```{r echo=FALSE}
+operator_table = data.frame(Operator = c('+','-','*','/','%/%','^','%%','( )'), 
+                            Description = c('Addition','Subtraction','Multiplication',
+                                     'Division','Floor Division','Exponent','Modulo','Brackets'),
+                            Notes = c('','','',
+                                      '','Returns an integer value by flooring the extra decimals', '(a^b) raises a to the power of b', 'Returns remainder after division','For managing order of operations'))
+knitr::kable(operator_table, caption  = 'Arithmetic operators in R')
+```
+
+<br>
+
+<details>
+  <summary>  Incomplete commands  </summary>
+  
+  <br>
+If you input a command which is incomplete, R will display something like this:
+
+```{r eval = FALSE, class.source = 'code-red'}
+> 1 / 
++
+```
+
+That **+** on a new line instead of **>** indicates that R is waiting for more
+input from you. You can finish the expression by entering another value and pressing
+<kbd>Enter</kbd>
+
+```{r eval = TRUE, class.source = 'code-green'}
+1 / 
++ 2
+```
+
+<br>
+Note that the **+** that appears in the console here is not the same as the arithmetic
+operator!
+
+</details>
+
+
+
+
+## Try it yourself
+Try evaluating some expressions in R using different arithmetic operators, such as the more complex:
+
+```{r, class.source = "code-blue"}
+(3*4) + 5 %/% 2 - 8
+```
+
+R evaluates expressions using the standard [Order of Operations](https://en.wikipedia.org/wiki/Order_of_operations)
+
+<br> 
+
+-----
+
+# R Objects
+
+In the previous section we learned the foundation of interacting with R - commands. We used R to perform some simple arithmetical operations by entering short equations into the terminal. 
+
+But what if we want to do more complex calculations? What if we want to use a result from one of our commands in a new command? 
+
+In this section, we'll learn about using **objects** as a way to remember the results of our calculations, and as a way to speed up our workflow and make our code **tidier**. 
+
+## What is an object?
+
+A object in the context of R is essentially a **value** that we assign a **name**. For example:
+
+```{r}
+age <- 30 # This is a numeric value, so we enter it normally
+name <- "Jane" # This is a string, so we surround the value with `" "`. We discuss object types later in this section.
+```
+
+This code uses the **assignment** operator: **<-** to tell R that we want to store the value `r age` in the object **age**, and that value `r name` in the object **name**.
+
+We can check the value of an object in R that we've already assigned by entering it's name again:
+
+```{r}
+age
+name
+```
+We have confirmed that the objects contain the values we assigned to them.
+
+<br>
+
+
+
+
+<details>
+  <summary> Object Names </summary>
+  <br>
+  
+  There is a lot of freedom when it comes to naming objects, but there are two concepts to keep in mind: **requirements** and **good practices**.
+  
+  First, there are some **requirements** for an object name, if an object name doesn't meet these criteria R will not allow you to create it.
+  
+- A object name must start with a letter and can be a combination of letters, digits, period(.) and underscore(_).
+- If it starts with period(.), it cannot be followed by a digit.
+- A object name cannot start with a number or underscore (_)
+- Object names are case-sensitive (age, Age and AGE are three different objects)
+- Reserved words cannot be used as object names (TRUE, FALSE, NULL, if...)
+
+Secondly, there are some generally agreed **good practices** for naming objects, such as:
+
+- Object names should be short and informative, e.g. **record_id** is better than either **Unique_record_identification_number** or **field993756**
+- Object names should be written using a consistent case style (prominent R package author Hadley Wickham has published a [style guide for R code](https://style.tidyverse.org/syntax.html) which suggests always using **snake case** for object and function names.)
+ 
+  
+</details>
+<br>
+
+## Try it yourself
+
+
+-----
+
+
+# Functions
+<br>
+
+In this section we're going to learn about **Functions**, a core feature of R which allows you to execute lots of code using
+short commands. Functions are an essential tool for accessing the more powerful capabilities of R for analyzing your data.
+
+Let's introduce a really simple function:
+
+```{r}
+sqrt(4) # This function returns the square root of the number that we put inside the brackets
+```
+
+The **sqrt()** function calculates the square root of a number provided. It is one of R's **base functions**, which means that you can use it by default wherever R is installed. But what is actually happening here?
+
+You can think of functions as a shortcut to more R code, but rather than writing out the full
+instructions you can simply ask R to evaluate the function. Let's look at an example, here I will 
+create a function which adds together two numbers and returns the result. 
+
+```{r}
+# This line tells R that I'm declaring a new function, called myFunction, which takes two arguments 'a' and 'b'. Anything written inside the curly brackets will be executed, substituting in the arguments I provide.
+myFunction <- function(a, b){ a + b }
+
+```
+
+So let's see how this function works:
+
+```{r}
+myFunction(2,3)
+```
+Functions are incredibly powerful, and learning to use pre-existing functions and writing your own is essential to unlocking the full potential of R.
+
+<details>
+  <summary>
+    Help! What does this function do?
+  </summary>
+<br>
+
+This is one of the most important tools in your arsenal as you learn R - where can you find help?
+
+The answer is simple, use the **?** symbol before the name of a function. If that function exists in a package or library that you have installed, RStudio will show you the documentation for it in a separate window, which is usually situated in the bottom-right of the RStudio interface. 
+
+For example, try running:
+
+```{r}
+?sum
+```
+
+To see how the **sum()** function works. There's a lot of information here, but the documentation gives an overview of what the function is supposed to do, what kind of arguments it expects, what kind of value it returns and often suggests similar functions which might be useful to you. As you get more confident with R, you'll understand more of the documentation. 
+
+You can also use **?** to get info about packages, which we will discuss in a later section.
+</details>
+
+## Try it yourself
+
+
+-----
+
+# Data Types
+
+<br>
+
+ - We introduced two types of objects in the previous section, numerics and character strings...
+ - 
+
+-----
+
+
+# R Scripts
+<br>
+- R Scripts move our code from the Console to a separate document
+- This makes our code much more reproducible
+- It also makes it significantly easier to write longer commands
+- Walkthrough of how to open a new r script 
+- Sidebar of file management
+
+
+-----
+
+
+## Types {.tabset}
+<br>
+
+### Example 1
+### Example 2
+
+
+-----
+
+# Getting Help
+<br>

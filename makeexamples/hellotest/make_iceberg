@@ -1,0 +1,8 @@
+#Makefile for hellotest model
+CC = g++
+CLINKER = ${CC}
+FLAGS = 
+LIBS = 
+LINKFLAGS = -ggdb -Wall -g3
+VPATH = src:../src
+INCLUDE = 
